@@ -1,0 +1,127 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD printout 1.0 Strict//EN"
+  "http://www.w3.org/TR/printout1/DTD/printout1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/printout">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<style type="text/css">
+@media print
+ {
+     div{
+         page-break-inside: avoid;
+     }
+ }
+ 
+ body {
+     font-family: verdana, helvetica, sans-serif;
+     background-color: #fff;
+     color: #000;
+     font-size: 12px;
+ }
+ 
+ div {
+   display: block;
+ }
+ 
+ .mcanswer {
+   line-height: 2em;
+ }
+ 
+ .question {
+     border: 1px solid #ddd;
+     margin: 5px;
+     padding: 3px;
+ }
+ 
+ .multichoice {
+     list-style-type: lower-alpha;
+ }
+ 
+ .questionlist {
+     list-style-type: decimal;
+ }
+ 
+ .category {
+   font-size: 1.5em ; font-weight: bold;
+ }
+ 
+ .questiontext {
+   font-weight: bold;
+ }
+ 
+ .questiontype {
+   font-size: 0.75em;
+ }
+ 
+ .points {
+   font-size: 0.75em;
+   font-weight: bold;
+ }
+ 
+ .wrong {
+   color: crimson;
+ }
+ 
+ .correct {
+   color: green;
+ }
+</style>
+</head>
+<body>
+<div><p><li class="questiontext">Order the sequence of events, in scheduling process P1 after process P0</li></p><ul><li><p>Process P0 is running<br><br></p>-> <span class="correct">1</span></li><li><p>timer interrupt occurs<br><br></p>-> <span class="correct">2</span></li><li><p>context of P0 is saved in P0's PCB<br><br></p>-> <span class="correct">3</span></li><li><p>context of P1 is loaded from P1's PCB<br><br></p>-> <span class="correct">4</span></li><li><p>Control is passed to P1<br><br></p>-> <span class="correct">5</span></li><li><p>Process P1 is running<br><br></p>-> <span class="correct">6</span></li></ul><p class="questiontype">scheduling order  (Matching)</p><hr></div>
+<div><p><li class="questiontext">Order the events that occur on a timer interrupt: </li></p><ul><li><p>Jump to a code pointed by IDT</p>-> <span class="correct">2</span></li><li><p>Change to kernel stack of currently running process</p>-> <span class="correct">1</span></li><li><p>Save the context of the currently running process</p>-> <span class="correct">3</span></li><li><p>Jump to scheduler code</p>-> <span class="correct">4</span></li><li><p>Select another process for execution</p>-> <span class="correct">5</span></li><li><p>Set the context of the new process</p>-> <span class="correct">6</span></li><li><p>Execute the code of the new process</p>-> <span class="correct">7</span></li></ul><p class="questiontype">timer interrupt -order events  (Matching)</p><hr></div>
+<div><p><li class="questiontext">For each line of code mentioned on the left side, select the location of sp/esp that is in use</li></p><ul><li><p><span style="color: #ff0000;">cli </span></p>
+<p><span style="color: #ff0000;">in bootasm.S</span></p>-> <span class="correct">Immaterial as the stack is not used here</span></li><li>-> <span class="correct">0x7c00 to 0x10000</span></li><li><p><span style="color: #339966;">  ljmp    $(SEG_KCODE&lt;&lt;3), $start32</span><br /><span style="color: #339966;">in bootasm.S</span></p>-> <span class="correct">Immaterial as the stack is not used here</span></li><li><p><span style="color: #008000;">  call    bootmain</span><br /><span style="color: #008000;">in bootasm.S</span></p>-> <span class="correct">0x7c00 to 0</span></li><li><p>  readseg((uchar*)elf, 4096, 0);<br />in bootmain.c</p>-> <span class="correct">0x7c00 to 0</span></li><li><p><span style="color: #800000;">  jmp *%eax</span><br /><span style="color: #800000;">in entry.S</span></p>-> <span class="correct">The 4KB area in kernel image, loaded in memory, named as 'stack'</span></li><li>-> <span class="correct">0x10000 to 0x7c00</span></li></ul><p class="questiontype">xv6, esp values  (Matching)</p><hr></div>
+<div><p><li class="questiontext">Select Yes if the mentioned element should be a part of PCB
+Select No otherwise.</li></p><br><p class="questiontype">part of PCB?  (Multiple True False (ETH))</p><hr></div>
+<div><p><li class="questiontext">Some part of the bootloader of xv6 is written in assembly while some part is written in C. Why is that so? Select all the appropriate choices</li></p><ul class="multichoice">
+ <li><span class="correct points">(50%)  </span><span class="mcanswer">The code in assembly is required for transition to protected mode, from real mode; after that calling convention applies, hence code can be written in C </span></li> <li><span class="correct points">(50%)  </span><span class="mcanswer">The setting up of the most essential memory management infrastructure needs assembly code </span></li> <li><span class="wrong points">(-50%)  </span><span class="mcanswer">The code in assembly is required for transition to protected mode, from real mode; but calling convention was applicable all the time </span></li> <li><span class="wrong points">(-50%)  </span><span class="mcanswer">The code for reading ELF file can not be written in assembly </span></li></ul>
+<p class="questiontype">bootloader in assembly,C, why?  (Multiple choice)</p><hr></div>
+<div><p><li class="questiontext"> Select all the correct statements about code of bootmain() in xv6  voidbootmain(void){  struct elfhdr *elf;  struct proghdr *ph, *eph;  void (*entry)(void);  uchar* pa;  elf = (struct elfhdr*)0x10000;  // scratch space  // Read 1st page off disk  readseg((uchar*)elf, 4096, 0);  // Is this an ELF executable?  if(elf-&gt;magic != ELF_MAGIC)    return;  // let bootasm.S handle error  // Load each program segment (ignores ph flags).  ph = (struct proghdr*)((uchar*)elf + elf-&gt;phoff);  eph = ph + elf-&gt;phnum;  for(; ph &lt; eph; ph++){    pa = (uchar*)ph-&gt;paddr;    readseg(pa, ph-&gt;filesz, ph-&gt;off);    if(ph-&gt;memsz &gt; ph-&gt;filesz)      stosb(pa + ph-&gt;filesz, 0, ph-&gt;memsz - ph-&gt;filesz);  }  // Call the entry point from the ELF header.  // Does not return!  entry = (void(*)(void))(elf-&gt;entry);  entry();}Also, inspect the relevant parts of the xv6 code. binary files, etc and run commands as you deem fit to answer this question.</li></p><ul class="multichoice">
+ <li><span class="correct points">(14.28571%)  </span><span class="mcanswer">The kernel file gets loaded at the Physical address 0x10000 in memory. </span></li> <li><span class="correct points">(14.28571%)  </span><span class="mcanswer">The kernel file in memory is not necessarily a continuously filled in chunk, it may have holes in it. </span></li> <li><span class="correct points">(14.28571%)  </span><span class="mcanswer">The elf-&gt;entry is set by the linker in the kernel file and it's 8010000c </span></li> <li><span class="correct points">(14.28571%)  </span><span class="mcanswer">The readseg finally invokes the disk I/O code using assembly instructions </span></li> <li><span class="correct points">(14.28571%)  </span><span class="mcanswer">The stosb() is used here, to fill in some space in memory with zeroes </span></li> <li><span class="correct points">(14.28571%)  </span><span class="mcanswer">The kernel ELF file contains actual physical address where particular sections of 'kernel' file should be loaded </span></li> <li><span class="correct points">(14.28571%)  </span><span class="mcanswer">The kernel file has only two program headers </span></li> <li><span class="wrong points">(-25%)  </span><span class="mcanswer">The elf-&gt;entry is set by the linker in the kernel file and it's 0x80000000 </span></li> <li><span class="wrong points">(-25%)  </span><span class="mcanswer">The elf-&gt;entry is set by the linker in the kernel file and it's 0x80000000 </span></li> <li><span class="wrong points">(-25%)  </span><span class="mcanswer">The condition     if(ph-&gt;memsz &gt; ph-&gt;filesz) is never true. </span></li> <li><span class="wrong points">(-25%)  </span><span class="mcanswer">The kernel file gets loaded at the Physical address 0x10000 +0x80000000 in memory. </span></li></ul>
+<p class="questiontype">correct stmt: bootmain()  (Multiple choice)</p><hr></div>
+<div><p><li class="questiontext">In bootasm.S, on the line  ljmp    $(SEG_KCODE&lt;&lt;3), $start32The SEG_KCODE &lt;&lt; 3, that is shifting of 1 by 3 bits is done because</li></p><ul class="multichoice">
+ <li><span class="wrong points">(0%)  </span><span class="mcanswer">The value 8 is stored in code segment </span></li> <li><span class="correct points">(100%)  </span><span class="mcanswer">The code segment is 16 bit and only upper 13 bits are used for segment number </span></li> <li><span class="wrong points">(0%)  </span><span class="mcanswer">The ljmp instruction does a divide by 8 on the first argument </span></li> <li><span class="wrong points">(0%)  </span><span class="mcanswer">The code segment is 16 bit and only lower 13 bits are used for segment number </span></li> <li><span class="wrong points">(0%)  </span><span class="mcanswer">While indexing the GDT using CS, the value in CS is always divided by 8 </span></li></ul>
+<p class="questiontype">SEG_KCODE  (Multiple choice / One answer only)</p><hr></div>
+<div><p><li class="questiontext">What's the trapframe in xv6?</li></p><ul class="multichoice">
+ <li><span class="correct points">(100%)  </span><span class="mcanswer">The sequence of values, including saved registers, constructed on the stack when an interrupt occurs, built by hardware + code in trapasm.S </span></li> <li><span class="wrong points">(0%)  </span><span class="mcanswer">The IDT table </span></li> <li><span class="wrong points">(0%)  </span><span class="mcanswer">The sequence of values, including saved registers, constructed on the stack when an interrupt occurs, built by hardware only </span></li> <li><span class="wrong points">(0%)  </span><span class="mcanswer">The sequence of values, including saved registers, constructed on the stack when an interrupt occurs, built by code in trapasm.S only </span></li> <li><span class="wrong points">(0%)  </span><span class="mcanswer">A frame of memory that contains all the trap handler code </span></li> <li><span class="wrong points">(0%)  </span><span class="mcanswer">A frame of memory that contains all the trap handler code's function pointers </span></li> <li><span class="wrong points">(0%)  </span><span class="mcanswer">A frame of memory that contains all the trap handler's addresses  </span></li></ul>
+<p class="questiontype">What's the trapframe in xv6?  (Multiple choice / One answer only)</p><hr></div>
+<div><p><li class="questiontext">Select all the correct statements about zombie processes</li></p><ul class="multichoice">
+ <li><span class="correct points">(20%)  </span><span class="mcanswer">A process becomes zombie when it finishes, and remains zombie until parent calls wait() on it </span></li> <li><span class="correct points">(20%)  </span><span class="mcanswer">A process can become zombie if it finishes, but the parent has finished before it </span></li> <li><span class="correct points">(20%)  </span><span class="mcanswer">A zombie process occupies space in OS data structures </span></li> <li><span class="correct points">(20%)  </span><span class="mcanswer">If the parent of a process finishes, before the process itself, then after finishing the process is typically attached to 'init' as parent </span></li> <li><span class="correct points">(20%)  </span><span class="mcanswer">init() typically keeps calling wait() for zombie processes to get cleaned up </span></li> <li><span class="wrong points">(-33.33333%)  </span><span class="mcanswer">A process becomes zombie when it's parent finishes </span></li> <li><span class="wrong points">(-33.33333%)  </span><span class="mcanswer">A zombie process remains zombie forever, as there is no way to clean it up </span></li> <li><span class="wrong points">(-33.33333%)  </span><span class="mcanswer">Zombie processes are harmless even if OS is up for long time </span></li></ul>
+<p class="questiontype">correct stmt- zombie  (Multiple choice)</p><hr></div>
+<div><p><li class="questiontext">Consider the following programs
+exec1.c
+#include &lt;unistd.h&gt;#include &lt;stdio.h&gt;int main() {    execl("./exec2", "./exec2", NULL);    }
+exec2.c#include &lt;unistd.h&gt;#include &lt;stdio.h&gt;int main() {    execl("/bin/ls", "/bin/ls", NULL);   
+   printf("hello\n");}
+Compiled as
+cc     exec1.c   -o exec1cc     exec2.c   -o exec2
+And run as
+$ ./exec1
+Explain the output of the above command (./exec1) 
+Assume that /bin/ls , i.e. the 'ls' program exists. </li></p><ul class="multichoice">
+ <li><span class="correct points">(100%)  </span><span class="mcanswer">"ls" runs on current directory </span></li> <li><span class="wrong points">(0%)  </span><span class="mcanswer">Execution fails as one exec can't invoke another exec </span></li> <li><span class="wrong points">(0%)  </span><span class="mcanswer">Execution fails as the call to execl() in exec1 fails </span></li> <li><span class="wrong points">(0%)  </span><span class="mcanswer">Execution fails as the call to execl() in exec2 fails </span></li> <li><span class="wrong points">(0%)  </span><span class="mcanswer">Program prints hello </span></li></ul>
+<p class="questiontype">exec-then-exec  (Multiple choice / One answer only)</p><hr></div>
+<div><p><li class="questiontext">Suppose a program does a scanf() call.
+Essentially the scanf does a read() system call.
+This call will obviously "block" waiting for the user input.
+In terms of OS data structures and execution of code, what does it mean?</li></p><ul class="multichoice">
+ <li><span class="correct points">(100%)  </span><span class="mcanswer">OS code for read() will move PCB of current process to a wait queue and call scheduler </span></li> <li><span class="wrong points">(0%)  </span><span class="mcanswer">OS code for read() will call scheduler </span></li> <li><span class="wrong points">(0%)  </span><span class="mcanswer">OS code for read() will move the PCB of this process to a wait queue and return from the system call </span></li> <li><span class="wrong points">(0%)  </span><span class="mcanswer">read() will return and process will be taken to a wait queue </span></li> <li><span class="wrong points">(0%)  </span><span class="mcanswer">read() returns and process calls scheduler() </span></li></ul>
+<p class="questiontype">Process blocks - meaning  (Multiple choice / One answer only)</p><hr></div>
+<div><p><li class="questiontext">The bootmain() function has this  code
+   elf = (struct elfhdr*)0x10000;  // scratch space   readseg((uchar*)elf, 4096, 0);
+Mark the statements as True or False with respect to this  code.
+In these statements 0x1000 is referred to as ADDRESS</li></p><br><p class="questiontype">bootmain scratch space  (Multiple True False (ETH))</p><hr></div>
+<div><p><li class="questiontext">Which parts of the xv6 code in bootasm.S bootmain.c , entry.S and in the codepath related to scheduler() and trap handling() can also be written in some other way, and still ensure that xv6 works properly?
+Writing code is not necessary. You only need to comment on which part of the code could be changed to something else or written in another fashion.
+Maximum two points to be written.</li></p><br><p class="questiontype">options in boot, scheduler code  (Essay)</p><hr></div>
+<div><p><li class="questiontext">Select the sequence of events that are NOT possible, assuming a non-interruptible kernel code
+(Note: non-interruptible kernel code means, if the kernel code is executing, then interrupts will be disabled).
+Note: A possible sequence may have some missing steps in between. An impossible sequence will will have n and n+1th steps such that n+1th step can not follow n'th step.</li></p><ul class="multichoice">
+ <li><span class="wrong points">(-33.33333%)  </span><span class="mcanswer">P1 running P1 makes system callsystem call returnsP1 runningtimer interruptScheduler runningP2 running </span></li> <li><span class="wrong points">(-33.33333%)  </span><span class="mcanswer">P1 runningkeyboard hardware interruptkeyboard interrupt handler runninginterrupt handler returnsP1 runningP1 makes sytem call system call returnsP1 runningtimer interruptschedulerP2 running </span></li> <li><span class="wrong points">(-33.33333%)  </span><span class="mcanswer">P1 runningP1 makes sytem call and blocksSchedulerP2 runningP2 makes sytem call and blocksSchedulerP3 runningHardware interruptInterrupt unblocks P1Interrupt returnsP3 runningTimer interruptSchedulerP1 running </span></li> <li><span class="correct points">(33.33333%)  </span><span class="mcanswer">P1 runningP1 makes sytem call and blocksSchedulerP2 runningP2 makes sytem call and blocksSchedulerP1 running again </span></li> <li><span class="correct points">(33.33333%)  </span><span class="mcanswer">P1 runningP1 makes system calltimer interruptSchedulerP2 runningtimer interruptScheulerP1 runningP1's system call return </span></li> <li><span class="correct points">(33.33333%)  </span><span class="mcanswer">P1 runningP1 makes sytem callSchedulerP2 runningP2 makes sytem call and blocksSchedulerP1 running again </span></li></ul>
+<p class="questiontype">Sequence not possible  (Multiple choice)</p><hr></div>
+<div><p><li class="questiontext">Select the correct statements about interrupt handling in xv6 code</li></p><ul class="multichoice">
+ <li><span class="correct points">(12.5%)  </span><span class="mcanswer">All the 256 entries in the IDT are filled </span></li> <li><span class="correct points">(12.5%)  </span><span class="mcanswer">Each entry in IDT essentially gives the values of CS and EIP to be used in handling that interrupt </span></li> <li><span class="correct points">(12.5%)  </span><span class="mcanswer">xv6 uses the 64th entry in IDT for system calls  </span></li> <li><span class="correct points">(12.5%)  </span><span class="mcanswer">On any interrupt/syscall/exception the control first jumps in vectors.S  </span></li> <li><span class="correct points">(12.5%)  </span><span class="mcanswer">Before going to alltraps, the kernel stack contains upto 5 entries.  </span></li> <li><span class="correct points">(12.5%)  </span><span class="mcanswer">The trapframe pointer in struct proc, points to a location on kernel stack  </span></li> <li><span class="correct points">(12.5%)  </span><span class="mcanswer">The function trap() is the called irrespective of hardware interrupt/system-call/exception </span></li> <li><span class="correct points">(12.5%)  </span><span class="mcanswer">The CS and EIP are changed only after pushing user code's SS,ESP on stack </span></li> <li><span class="wrong points">(-20%)  </span><span class="mcanswer">xv6 uses the 0x64th entry in IDT for system calls </span></li> <li><span class="wrong points">(-20%)  </span><span class="mcanswer">On any interrupt/syscall/exception the control first jumps in trapasm.S  </span></li> <li><span class="wrong points">(-20%)  </span><span class="mcanswer">The trapframe pointer in struct proc, points to a location on user stack  </span></li> <li><span class="wrong points">(-20%)  </span><span class="mcanswer">The function trap() is the called only in case of hardware interrupt </span></li> <li><span class="wrong points">(-20%)  </span><span class="mcanswer">The CS and EIP are changed only immediately on a hardware interrupt </span></li></ul>
+<p class="questiontype">correct stmt: xv6 interrupt handler  (Multiple choice)</p><hr></div>
+<div><p><li class="questiontext">Mark the statements, w.r.t. the scheduler of xv6 as True or False</li></p><br><p class="questiontype">Scheduler code: T/F  (Multiple True False (ETH))</p><hr></div>
+</body>
+</html>

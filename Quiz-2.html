@@ -1,0 +1,155 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD printout 1.0 Strict//EN"
+  "http://www.w3.org/TR/printout1/DTD/printout1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/printout">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<style type="text/css">
+@media print
+ {
+     div{
+         page-break-inside: avoid;
+     }
+ }
+ 
+ body {
+     font-family: verdana, helvetica, sans-serif;
+     background-color: #fff;
+     color: #000;
+     font-size: 12px;
+ }
+ 
+ div {
+   display: block;
+ }
+ 
+ .mcanswer {
+   line-height: 2em;
+ }
+ 
+ .question {
+     border: 1px solid #ddd;
+     margin: 5px;
+     padding: 3px;
+ }
+ 
+ .multichoice {
+     list-style-type: lower-alpha;
+ }
+ 
+ .questionlist {
+     list-style-type: decimal;
+ }
+ 
+ .category {
+   font-size: 1.5em ; font-weight: bold;
+ }
+ 
+ .questiontext {
+   font-weight: bold;
+ }
+ 
+ .questiontype {
+   font-size: 0.75em;
+ }
+ 
+ .points {
+   font-size: 0.75em;
+   font-weight: bold;
+ }
+ 
+ .wrong {
+   color: crimson;
+ }
+ 
+ .correct {
+   color: green;
+ }
+</style>
+</head>
+<body>
+<div><p><li class="questiontext">Select all the correct statements about MMU and it's functionality (on a non-demand paged system)</li></p><ul class="multichoice">
+ <li><span class="correct points">(25%)  </span><span class="mcanswer">MMU is inside the processor </span></li> <li><span class="correct points">(25%)  </span><span class="mcanswer">Logical to physical address translations in MMU are done in hardware, automatically </span></li> <li><span class="correct points">(25%)  </span><span class="mcanswer">The Operating system sets up relevant CPU registers to enable proper MMU translations </span></li> <li><span class="correct points">(25%)  </span><span class="mcanswer">Illegal memory access is detected in hardware by MMU and a trap is raised </span></li> <li><span class="wrong points">(-25%)  </span><span class="mcanswer">MMU is a separate chip outside the processor </span></li> <li><span class="wrong points">(-25%)  </span><span class="mcanswer">Logical to physical address translations in MMU are done with specific machine instructions </span></li> <li><span class="wrong points">(-25%)  </span><span class="mcanswer">The operating system interacts with MMU for every single address translation </span></li> <li><span class="wrong points">(-25%)  </span><span class="mcanswer">Illegal memory access is detected by operating system </span></li></ul>
+<p class="questiontype">correct stmt: MMU  (Multiple choice)</p><hr></div>
+<div><p><li class="questiontext">For the reference string 3 4 3 5 2 using FIFO replacement policy for pages, consider the number of page faults for 2, 3 and 4 page frames.Select the correct statement. </li></p><ul class="multichoice">
+ <li><span class="correct points">(100%)  </span><span class="mcanswer">Do not exhibit Balady's anomaly </span></li> <li><span class="wrong points">(0%)  </span><span class="mcanswer">Exhibit Balady's anomaly between 2 and 3 frames </span></li> <li><span class="wrong points">(0%)  </span><span class="mcanswer">Exhibit Balady's anomaly between 3 and 4 frames </span></li></ul>
+<p class="questiontype">fifo balady's anomaly  (Multiple choice / One answer only)</p><hr></div>
+<div><p><li class="questiontext">For the reference string 3 4 3 5 2 using LRU replacement policy for pages, consider the number of page faults for 2, 3 and 4 page frames.Select the most correct statement.</li></p><ul class="multichoice">
+ <li><span class="correct points">(50%)  </span><span class="mcanswer">This example does not exhibit Balady's anomaly </span></li> <li><span class="wrong points">(0%)  </span><span class="mcanswer">Exhibit Balady's anomaly between 2 and 3 frames </span></li> <li><span class="wrong points">(0%)  </span><span class="mcanswer">Exhibit Balady's anomaly between 3 and 4 frames </span></li> <li><span class="correct points">(100%)  </span><span class="mcanswer">LRU will never exhibit Balady's anomaly </span></li></ul>
+<p class="questiontype">LRU balady's anomaly  (Multiple choice / One answer only)</p><hr></div>
+<div><p><li class="questiontext">Suppose a kernel uses a buddy allocator. The smallest chunk that can be allocated is of size 32 bytes.  One bit is used to track each such chunk, where 1 means allocated and 0 means free. The chunk looks like this as of now:10011010Now, there is a request for a chunk of 50 bytes.
+After this allocation, the bitmap, indicating the status of the buddy allocator will be</li></p><p>Answer: 11111010</p><br><p class="questiontype">buddy allocated-1  (Short answer)</p><hr></div>
+<div><p><li class="questiontext">Consider the reference string 6 4 2 0 1 2 6 9 2 0 5 If the number of page frames is 3, then total number of page faults (including initial), using FIFO replacement is:</li></p><ul><li>10</li><li>9</li></ul><br><p class="questiontype">FIFO page faults  (Numerical)</p><hr></div>
+<div><p><li class="questiontext">Mark whether the given sequence of events is possible or not-possible. Also, select the reason for your answer.
+For each sequence it's a not-possible sequence if some important event is not mentioned in the sequence.
+Assume that the kernel code is non-interruptible and uniprocessor system.
+Process P1, user code executingTimer interruptContext changes to kernel contextGeneric interrupt handler runsGeneric interrupt handler calls SchedulerScheduler selects P2 for executionAfter scheduler, Process P2 user code executing
+This sequence of events is:{#1}
+Because
+{#2}</li></p><ul><li class="mcanswer">{1:MULTICHOICE:%100%not-possible#~%0%possible#}</li><li class="mcanswer">{1:MULTICHOICE:%100%Process P2 has to return from interrupt context before it's user code executes#~%0%Timer interrupt is not possible as kernel is non-interruptible#~%0%The scheduler will not run in this scenario#~%0%Generic interrupt handler can not call scheduler#~%0%Process P1's user code will prohibit any interrupts#~%0%Interrupts are not possible when kernel code is running#~%0%On uniprocessor systems timer is not needed#}</li></ul><p class="questiontype">impossible-sequence-of-events-1  (Embedded answers (Cloze))</p><hr></div>
+<div><p><li class="questiontext">Select all the correct statements about process states.
+Note that in this question you lose marks for every incorrect choice that you make, proportional to actual number of incorrect choices.</li></p><ul class="multichoice">
+ <li><span class="correct points">(25%)  </span><span class="mcanswer">Process state is stored in the PCB </span></li> <li><span class="correct points">(25%)  </span><span class="mcanswer">Process state can be implemented as just a number </span></li> <li><span class="correct points">(25%)  </span><span class="mcanswer">The scheduler can change state of a process from RUNNALBE to RUNNING </span></li> <li><span class="correct points">(25%)  </span><span class="mcanswer">A process becomes ZOMBIE when it calls exit()  </span></li> <li><span class="wrong points">(-20%)  </span><span class="mcanswer">Process state is changed only by interrupt handlers  </span></li> <li><span class="wrong points">(-20%)  </span><span class="mcanswer">Process state is stored in the processor </span></li> <li><span class="wrong points">(-20%)  </span><span class="mcanswer">Process state is implemented as a string </span></li> <li><span class="wrong points">(-20%)  </span><span class="mcanswer">The scheduler can change state of a process from RUNNALBE to RUNNING and vice-versa </span></li> <li><span class="wrong points">(-20%)  </span><span class="mcanswer">A process becomes ZOMBIE when another process bites into it's memory </span></li></ul>
+<p class="questiontype">process state correct stmt  (Multiple choice)</p><hr></div>
+<div><p><li class="questiontext">Mark statements True/False w.r.t. change of states of a process. Note that a statement is true only if the claim and argument both are true. 
+Reference: The process state diagram (and your understanding of how kernel code works). Note - the diagram does not show zombie state!
+</li></p><br><p class="questiontype">process-state-change - 1  (Multiple True False (ETH))</p><hr></div>
+<div><p><li class="questiontext">Select all the correct statements w.r.t user and kernel threads</li></p><ul class="multichoice">
+ <li><span class="correct points">(20%)  </span><span class="mcanswer">many-one model can be implemented even if there are no kernel threads </span></li> <li><span class="correct points">(20%)  </span><span class="mcanswer">all three models, that is many-one, one-one, many-many , require a user level thread library </span></li> <li><span class="correct points">(20%)  </span><span class="mcanswer">one-one model increases kernel's scheduling load </span></li> <li><span class="correct points">(20%)  </span><span class="mcanswer">many-one model gives no speedup on multicore processors </span></li> <li><span class="correct points">(20%)  </span><span class="mcanswer">A process blocks in many-one model even if a single thread makes a blocking system call
+  </span></li> <li><span class="wrong points">(-50%)  </span><span class="mcanswer">one-one model can be implemented even if there are no kernel threads </span></li> <li><span class="wrong points">(-50%)  </span><span class="mcanswer">A process may not block in many-one model, if a thread makes a blocking system call </span></li></ul>
+<p class="questiontype">correct stmt-thread models  (Multiple choice)</p><hr></div>
+<div><p><li class="questiontext">If one thread opens a file with read privileges then</li></p><ul class="multichoice">
+ <li><span class="wrong points">(0%)  </span><span class="mcanswer">other threads in the another process can also read from that file </span></li> <li><span class="correct points">(100%)  </span><span class="mcanswer">other threads in the same process can also read from that file </span></li> <li><span class="wrong points">(0%)  </span><span class="mcanswer">any other thread cannot read from that file </span></li> <li><span class="wrong points">(0%)  </span><span class="mcanswer">none of these </span></li></ul>
+<p class="questiontype">Thread  (Multiple choice / One answer only)</p><hr></div>
+<div><p><li class="questiontext">Select all the correct statements about signals
+ </li></p><ul class="multichoice">
+ <li><span class="correct points">(25%)  </span><span class="mcanswer">Signals are delivered to a process by kernel </span></li> <li><span class="correct points">(25%)  </span><span class="mcanswer">A signal handler can be invoked asynchronously or synchronously depending on signal type </span></li> <li><span class="correct points">(25%)  </span><span class="mcanswer">The signal handler code runs in user mode of CPU </span></li> <li><span class="correct points">(25%)  </span><span class="mcanswer">SIGKILL definitely kills a process because it can't be caught or ignored, and it's default action terminates the process </span></li> <li><span class="wrong points">(-25%)  </span><span class="mcanswer">Signals are delivered to a process by another process </span></li> <li><span class="wrong points">(-25%)  </span><span class="mcanswer">The signal handler code runs in kernel mode of CPU </span></li> <li><span class="wrong points">(-25%)  </span><span class="mcanswer">SIGKILL definitely kills a process because it's code runs in kernel mode of CPU </span></li> <li><span class="wrong points">(-25%)  </span><span class="mcanswer">Signal handlers once replaced can't be restored </span></li></ul>
+<p class="questiontype">correct stmt - signal handling  (Multiple choice)</p><hr></div>
+<div><p><li class="questiontext">Map the functionality/use with  function/variable in xv6 code. </li></p><ul><li><p>Setup kernel part of a page table, mapping kernel code, data, read-only data, I/O space, devices</p>-> <span class="correct">setupkvm()</span></li><li><p>return a free page, if available; 0, otherwise</p>-> <span class="correct">kalloc()</span></li><li><p>Create page table entries for a given range of virtual and physical addresses; including page directory entries if needed</p>-> <span class="correct">mappages()</span></li><li><p>Return address of page table entry in a given page directory, for a given virtual address; creates page table if necessary</p>-> <span class="correct">walkpgdir()</span></li><li><p>Array listing the kernel memory mappings, to be used by setupkvm()</p>-> <span class="correct">kmap[]</span></li><li><p>Setup kernel part of a page table, and switch to that page table</p>-> <span class="correct">kvmalloc()</span></li><li>-> <span class="correct">kinit1()</span></li><li>-> <span class="correct">kinit2()</span></li><li>-> <span class="correct">kfree()</span></li></ul><p class="questiontype">functionality/use with  function/variable in xv6 code.  (Matching)</p><hr></div>
+<div><p><li class="questiontext">After virtual memory is implemented
+(select T/F for each of the following)One Program's size can be larger than physical memory size</li></p><br><p class="questiontype">After VM implementation  (Multiple True False (ETH))</p><hr></div>
+<div><p><li class="questiontext">For each function/code-point, select the status of segmentation setup in xv6</li></p><ul><li><p>bootasm.S</p>-> <span class="correct">gdt setup with 3 entries, at start32 symbol of bootasm.S</span></li><li><p>bootmain()</p>-> <span class="correct">gdt setup with 3 entries, at start32 symbol of bootasm.S</span></li><li><p>entry.S</p>-> <span class="correct">gdt setup with 3 entries, at start32 symbol of bootasm.S</span></li><li><p>kvmalloc() in main()</p>-> <span class="correct">gdt setup with 3 entries, at start32 symbol of bootasm.S</span></li><li><p>after seginit() in main()</p>-> <span class="correct">gdt setup with 5 entries (0 to 4) on one processor</span></li><li><p>after startothers() in main()</p>-> <span class="correct">gdt setup with 5 entries (0 to 4) on all processors</span></li><li>-> <span class="correct">gdt setup with 3 entries, right from first line of code of bootloader</span></li></ul><p class="questiontype">code,segmentation status,xv6  (Matching)</p><hr></div>
+<div><p><li class="questiontext">W.r.t. Memory management in xv6,
+xv6 uses physical memory upto 224 MB onlyMark statements True or False</li></p><br><p class="questiontype">xv6 memory management T/F  (Multiple True False (ETH))</p><hr></div>
+<div><p><li class="questiontext">Select the correct statements about interrupt handling in xv6 code</li></p><ul class="multichoice">
+ <li><span class="correct points">(12.5%)  </span><span class="mcanswer">All the 256 entries in the IDT are filled </span></li> <li><span class="correct points">(12.5%)  </span><span class="mcanswer">Each entry in IDT essentially gives the values of CS and EIP to be used in handling that interrupt </span></li> <li><span class="correct points">(12.5%)  </span><span class="mcanswer">xv6 uses the 64th entry in IDT for system calls  </span></li> <li><span class="correct points">(12.5%)  </span><span class="mcanswer">On any interrupt/syscall/exception the control first jumps in vectors.S  </span></li> <li><span class="correct points">(12.5%)  </span><span class="mcanswer">Before going to alltraps, the kernel stack contains upto 5 entries.  </span></li> <li><span class="correct points">(12.5%)  </span><span class="mcanswer">The trapframe pointer in struct proc, points to a location on kernel stack  </span></li> <li><span class="correct points">(12.5%)  </span><span class="mcanswer">The function trap() is the called irrespective of hardware interrupt/system-call/exception </span></li> <li><span class="correct points">(12.5%)  </span><span class="mcanswer">The CS and EIP are changed only after pushing user code's SS,ESP on stack </span></li> <li><span class="wrong points">(-20%)  </span><span class="mcanswer">xv6 uses the 0x64th entry in IDT for system calls </span></li> <li><span class="wrong points">(-20%)  </span><span class="mcanswer">On any interrupt/syscall/exception the control first jumps in trapasm.S  </span></li> <li><span class="wrong points">(-20%)  </span><span class="mcanswer">The trapframe pointer in struct proc, points to a location on user stack  </span></li> <li><span class="wrong points">(-20%)  </span><span class="mcanswer">The function trap() is the called only in case of hardware interrupt </span></li> <li><span class="wrong points">(-20%)  </span><span class="mcanswer">The CS and EIP are changed only immediately on a hardware interrupt </span></li></ul>
+<p class="questiontype">correct stmt: xv6 interrupt handler  (Multiple choice)</p><hr></div>
+<div><p><li class="questiontext">The complete range of virtual addresses (after main() in main.c is over), from which the free pages used by kalloc() and kfree() is derived,are:</li></p><ul class="multichoice">
+ <li><span class="correct points">(100%)  </span><span class="mcanswer">end, P2V(PHYSTOP) </span></li> <li><span class="wrong points">(0%)  </span><span class="mcanswer">end, PHYSTOP </span></li> <li><span class="wrong points">(0%)  </span><span class="mcanswer">P2V(end), P2V(PHYSTOP) </span></li> <li><span class="wrong points">(0%)  </span><span class="mcanswer">P2V(end), PHYSTOP </span></li> <li><span class="wrong points">(0%)  </span><span class="mcanswer">end, 4MB </span></li> <li><span class="wrong points">(0%)  </span><span class="mcanswer">end, (4MB + PHYSTOP) </span></li> <li><span class="wrong points">(0%)  </span><span class="mcanswer">end, P2V(4MB + PHYSTOP) </span></li></ul>
+<p class="questiontype">free pages VA range  (Multiple choice / One answer only)</p><hr></div>
+<div><p><li class="questiontext">The data structure used in kalloc() and kfree() in xv6 is</li></p><ul class="multichoice">
+ <li><span class="correct points">(100%)  </span><span class="mcanswer">Singly linked NULL terminated list </span></li> <li><span class="wrong points">(0%)  </span><span class="mcanswer">Singly linked circular list </span></li> <li><span class="wrong points">(0%)  </span><span class="mcanswer">Double linked NULL terminated list </span></li> <li><span class="wrong points">(0%)  </span><span class="mcanswer">Doubly linked circular list </span></li></ul>
+<p class="questiontype">kalloc, kfree data structure  (Multiple choice / One answer only)</p><hr></div>
+<div><p><li class="questiontext">Choice of the global or local replacement strategy is a subjective choice for kernel programmers. There are advantages and disadvantages on either side. Out of the following statements, that advocate either global or local replacement strategy, select those statements   that have a logically CONSISTENT argument. (That is any statement that is logically correct about either global or local replacement)</li></p><br><p class="questiontype">Global/local arguments  (Multiple True False (ETH))</p><hr></div>
+<div><p><li class="questiontext">Mark the statements about named and un-named pipes as True or False</li></p><br><p class="questiontype">Named vs unnamed pipe  (Multiple True False (ETH))</p><hr></div>
+<div><p><li class="questiontext">Mark the statements as True or False, w.r.t. mmap()</li></p><br><p class="questiontype">T/F about mmap()  (Multiple True False (ETH))</p><hr></div>
+<div><p><li class="questiontext">Mark the statements as True or False, w.r.t. passing of arguments to system calls in xv6 code.</li></p><br><p class="questiontype">T/F argument passing xv6  (Multiple True False (ETH))</p><hr></div>
+<div><p><li class="questiontext">Mark the statements as True or False, w.r.t. thrashing</li></p><br><p class="questiontype">T/F multiple about Thrashing  (Multiple True False (ETH))</p><hr></div>
+<div><p><li class="questiontext">W.r.t. xv6 code, match the state of a process with a code that sets the state</li></p><ul><li>EMBRYO-> <span class="correct">fork()->allocproc() before setting up the UVM</span></li><li>UNUSED-> <span class="correct">wait(), called by parent process</span></li><li>SLEEPING-> <span class="correct">sleep(), called by any process blocking itself</span></li><li>RUNNABLE-> <span class="correct">wakeup(), called by an interrupt handler</span></li><li>RUNNING-> <span class="correct">scheduler()</span></li><li>ZOMBIE-> <span class="correct">exit(), called by process itself</span></li><li>-> <span class="correct">exit(), called by an interrupt handler</span></li><li>-> <span class="correct">wait() called by the exiting process itself</span></li></ul><p class="questiontype">xv6 process state changes  (Matching)</p><hr></div>
+<div><p><li class="questiontext">Match the description of a memory management function with the name of the function that provides it, in xv6</li></p><ul><li>Create a copy of the page table of a process-> <span class="correct">copyuvm()</span></li><li>Mark the page as in-accessible-> <span class="correct">clearpteu()</span></li><li>setup the kernel part in the page table-> <span class="correct">setupkvm()</span></li><li>Load contents from ELF into existing pages-> <span class="correct">loaduvm()</span></li><li>Load contents from ELF into pages after allocating the pages first-> <span class="correct">No such function</span></li><li>Copy the code pages of a process-> <span class="correct">No such function</span></li><li>Setup and load the user page table for initcode process-> <span class="correct">inituvm()</span></li><li>Switch to kernel page table-> <span class="correct">switchkvm()</span></li><li>Switch to user page table-> <span class="correct">switchuvm()</span></li></ul><p class="questiontype">xv6 VM functions  (Matching)</p><hr></div>
+<div><p><li class="questiontext">Select all correct statements w.r.t. Major and Minor page faults on Linux</li></p><ul class="multichoice">
+ <li><span class="correct points">(16.66667%)  </span><span class="mcanswer">Minor page fault may occur because the page was a shared memory page </span></li> <li><span class="correct points">(16.66667%)  </span><span class="mcanswer">Minor page fault may occur because of a page fault during fork(), on code of an already running process </span></li> <li><span class="correct points">(16.66667%)  </span><span class="mcanswer">Minor page fault may occur because the page was freed, but still tagged and available in the free page list </span></li> <li><span class="correct points">(16.66667%)  </span><span class="mcanswer">Major page faults are likely to occur in more numbers at the beginning of the process </span></li> <li><span class="correct points">(16.66667%)  </span><span class="mcanswer">Thrashing is possible only due to major page faults </span></li> <li><span class="correct points">(16.66667%)  </span><span class="mcanswer">Minor page faults are an improvement of the page buffering techniques </span></li></ul>
+<p class="questiontype">Major & Minor page faults  (Multiple choice)</p><hr></div>
+<div><p><li class="questiontext">Select the correct points of comparison between POSIX and System V shared memory.</li></p><ul class="multichoice">
+ <li><span class="correct points">(25%)  </span><span class="mcanswer">POSIX shared memory is newer than System V shared memory </span></li> <li><span class="correct points">(25%)  </span><span class="mcanswer">POSIX shared memory is "thread safe", System V is not </span></li> <li><span class="correct points">(25%)  </span><span class="mcanswer">POSIX allows giving name to shared memory, System V does not </span></li> <li><span class="correct points">(25%)  </span><span class="mcanswer">System V is more prevalent than POSIX even today </span></li></ul>
+<p class="questiontype">POSIX & SYSV SHM  (Multiple choice)</p><hr></div>
+<div><p><li class="questiontext">Select the most common causes of use of IPC by processes</li></p><ul class="multichoice">
+ <li><span class="correct points">(33.33333%)  </span><span class="mcanswer">Sharing of information of common interest </span></li> <li><span class="correct points">(33.33333%)  </span><span class="mcanswer">Breaking up a large task into small tasks and speeding up computation, on multiple core machines </span></li> <li><span class="correct points">(33.33333%)  </span><span class="mcanswer">More modular code </span></li> <li><span class="wrong points">(-50%)  </span><span class="mcanswer">Get the kernel performance statistics </span></li> <li><span class="wrong points">(-50%)  </span><span class="mcanswer">More security checks </span></li></ul>
+<p class="questiontype">Use of IPC  (Multiple choice)</p><hr></div>
+<div><p><li class="questiontext">Given below is a sequence of reference bits on pages before the second chance algorithm runs. Before the algorithm runs, the counter is at the page marked (x). Write the sequence of reference bits after the second chance algorithm has executed once. In the answer write PRECISELY one space BETWEEN each number and do not mention (x). 
+
+0 0 1(x) 1 0 1 1</li></p><p>Answer: 0 0 0 0 0 1 1</p><br><p class="questiontype">Second chance  (Short answer)</p><hr></div>
+<div><p><li class="questiontext">Order the following events, in the creation of init() process in xv6:</li></p><ul><li>userinit() is called</li><li>empty struct proc is obtained for initcode</li><li>kernel stack is allocated for initcode process</li><li>trapframe and context pointers are set to proper location</li><li>code is set to start in forkret() when process gets scheduled</li><li>kernel memory mappings are created for initcode</li><li>values are set in the trapframe of initcode</li><li>initcode process is set to be runnable</li><li>initcode is selected by scheduler for execution</li><li>initcode process runs</li><li>initcode calls exec system call</li><li>trap() runs</li><li>function pointer from syscalls[] array is invoked</li><li>sys_exec runs</li><li>the header of "/init" ELF file is ready by kernel</li><li>memory mappings are created for "/init" process</li><li>Stack is allocated for "/init" process</li><li>Arguments on setup on process stack for /init</li><li>name of process "/init" is copied in struct proc</li><li>page table mappings of 'initcode' are replaced by makpings of 'init'</li></ul><br><p class="questiontype">order: creation of init process  (Ordering)</p><hr></div>
+<div><p><li class="questiontext">
+Mark the statements as True or False, w.r.t. the above diagram (note that the diagram does not cover all details of what actually happens!) </li></p><br><p class="questiontype">T/F basics of paging  (Multiple True False (ETH))</p><hr></div>
+<div><p><li class="questiontext">Given that a kernel has 1000 KB of total memory, and holes of sizes (in that order) 300 KB, 200 KB, 100 KB, 250 KB. For each of the requests on the left side, match it with the chunk chosen using the specified algorithm.
+Consider each request as first request.</li></p><ul><li>200 KB, first fit-> <span class="correct">300 KB</span></li><li>150 KB, first fit-> <span class="correct">300 KB</span></li><li>220 KB, best fit-> <span class="correct">250 KB</span></li><li>150 KB, best fit-> <span class="correct">200 KB</span></li><li>50 KB, worst fit-> <span class="correct">300 KB</span></li><li>100 KB, worst fit-> <span class="correct">300 KB</span></li><li>-> <span class="correct">100 KB</span></li></ul><p class="questiontype">first-best-worst fit(2)  (Matching)</p><hr></div>
+<div><p><li class="questiontext">Select all the correct statements about linking and loading.</li></p><ul class="multichoice">
+ <li><span class="correct points">(20%)  </span><span class="mcanswer">Continuous memory management schemes can support static linking and static loading. (may be inefficiently) </span></li> <li><span class="correct points">(20%)  </span><span class="mcanswer">Continuous memory management schemes can support static linking and dynamic loading. (may be inefficiently) </span></li> <li><span class="correct points">(20%)  </span><span class="mcanswer">Dynamic linking essentially results in relocatable code.  </span></li> <li><span class="correct points">(20%)  </span><span class="mcanswer">Loader is part of the operating system </span></li> <li><span class="correct points">(20%)  </span><span class="mcanswer">Dynamic linking and loading is not possible without demand paging or demand segmentation.  </span></li> <li><span class="wrong points">(-25%)  </span><span class="mcanswer">Loader is last stage of the linker program  </span></li> <li><span class="wrong points">(-25%)  </span><span class="mcanswer">Static linking leads to non-relocatable code  </span></li> <li><span class="wrong points">(-25%)  </span><span class="mcanswer">Continuous memory management schemes can support dynamic linking and dynamic loading.  </span></li> <li><span class="wrong points">(-25%)  </span><span class="mcanswer">Dynamic linking is  possible with continous memory management, but variable sized partitions only. </span></li></ul>
+<p class="questiontype">correct stmt: linking loading  (Multiple choice)</p><hr></div>
+<div><p><li class="questiontext">Consider a computer system with a 32-bit logical address and 4- KB page size. The system supports up to 512 MB of physical memory. How many entries are there in each of the following?Write answer as a decimal number. A conventional, single-level page table: {#1} An inverted page table: {#2} </li></p><ul><li class="mcanswer">{1:SHORTANSWER:%100%1048576#}</li><li class="mcanswer">{1:SHORTANSWER:%100%131072#}</li></ul><p class="questiontype">number of page table entries  (Embedded answers (Cloze))</p><hr></div>
+<div><p><li class="questiontext">Consider a demand-paging system with the following time-measured utilizations:CPU utilization : 20%Paging disk: 97.7%Other I/O devices:  5%
+For each of the following, indicate whether it will (or is likely to) improve CPU utilization (even if by a small amount). Explain your answers.
+a. Install a faster CPU :{#1} b. Install a bigger paging disk. :{#2}c. Increase the degree of multiprogramming. :{#3}d. Decrease the degree of multiprogramming. :{#4}e. Install more main memory.:{#5}f. Install a faster hard disk or multiple controllers with multiple hard disks. :{#6}g. Add prepaging to the page-fetch algorithms. :{#7}
+h. Increase the page size. :{#8}</li></p><ul><li class="mcanswer">{1:MULTICHOICE:%100%No#~%0%Yes#}</li><li class="mcanswer">{1:MULTICHOICE:%100%No#~%0%Yes#}</li><li class="mcanswer">{1:MULTICHOICE:%100%No#~%0%Yes#}</li><li class="mcanswer">{1:MULTICHOICE:%100%Yes#~%0%No#}</li><li class="mcanswer">{1:MULTICHOICE:%100%Yes#~%0%No#}</li><li class="mcanswer">{1:MULTICHOICE:%100%Yes#~%0%No#}</li><li class="mcanswer">{1:MULTICHOICE:%100%Yes#~%0%No#~%0%May be#}</li><li class="mcanswer">{1:MULTICHOICE:%100%Yes#~%0%No#~%0%May be#}</li></ul><p class="questiontype">increase cpu utilisation  (Embedded answers (Cloze))</p><hr></div>
+</body>
+</html>
